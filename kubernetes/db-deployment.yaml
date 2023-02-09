@@ -8,7 +8,10 @@ metadata:
 spec:
   replicas: 1
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   minReadySeconds: 20
   selector:
     matchLabels:
@@ -24,5 +27,5 @@ spec:
             name: db-secret
         name: db-deployment
         image: harbor.dev.afsmtddso.com/cfinegan-harbor-project/db:971c881-a9977bb
-        ports:
+        ports: 
         - containerPort: 5432
