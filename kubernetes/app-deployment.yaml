@@ -20,9 +20,11 @@ spec:
     spec:
       containers:
       - envFrom:
+        - configMapRef:
+            name: feature-toggle
         - secretRef:
             name: db-secret
         name: app-deployment
-        image: harbor.dev.afsmtddso.com/cfinegan-harbor-project/app@sha256:7c3dfd87d34a8fc1963c05aa87d11f71d0633ccdf49624d70a9b4f288acd3f1f
+        image: harbor.dev.afsmtddso.com/cfinegan-harbor-project/app:971c881-a9977bb
         ports:
         - containerPort: 5000
